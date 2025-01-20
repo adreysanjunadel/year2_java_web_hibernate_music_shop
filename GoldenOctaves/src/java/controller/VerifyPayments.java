@@ -21,7 +21,7 @@ public class VerifyPayments extends HttpServlet {
         String status_code = request.getParameter("status_code");
         String md5sig = request.getParameter("md5sig");
 
-        String merchant_secret = "MzcwNTcxNTY1NDc4ODU5MzAxOTE3MTgzMzkzNTcyMjYzNDgyODQ2";
+        String merchant_secret = "ENTER_MERCHANT_SECRET_HERE";
         String merchant_secret_md5hash = PayHere.generateMD5(merchant_secret);
 
         String generatedMd5Hash = PayHere.generateMD5(
