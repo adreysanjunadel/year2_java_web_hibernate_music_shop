@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>My Account</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="assets/img/logo.png">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+        <!-- Notification CSS -->
+        <link rel="stylesheet" href="assets/css/notification.css"/>
+    </head>
+    <body class="bg-dark text-light" onload="loadFeatures();">
+        <!-- Blurred Background with Increased Blur at Bottom -->
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/img/bg.png') no-repeat center center; background-size: cover; filter: blur(10px) brightness(60%); z-index: -1; pointer-events: none;">
+            <!-- Additional Blur Overlay at Bottom -->
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%); z-index: -1;"></div>
+        </div>
+
+        <!-- Thin Strip Header (Disappears on scroll) -->
+        <header id="top-strip" class="bg-dark py-2">
+            <div class="container custom-container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex gap-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    English
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">English</a></li>
+                                    <li><a class="dropdown-item" href="#">Spanish</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    LKR
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">LKR</a></li>
+                                    <li><a class="dropdown-item" href="#">USD</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <ul class="list-inline m-0" id="st-quick-link">
+                            <li class="list-inline-item"><a href="#" class="text-light">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="list-inline-item" id="st-quick-link-li-1"><a href="signup.html" class="text-light">Join Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="list-inline-item" id="st-quick-link-li-2"><a href="signin.html" class="text-light">Sign In</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Floating "Island" Header -->
+        <div id="floating-header" class="container-fluid">
+            <div class="floating-island custom-container bg-dark text-light shadow-sm px-5 py-3 rounded">
+                <div class="d-flex align-items-center justify-content-between">
+                    <!-- Logo and Name -->
+                    <a class="d-flex align-items-center text-decoration-none text-light" href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo" width="40" height="40" class="me-2">
+                        <span class="fs-4">&nbsp;&nbsp;Golden Octaves</span>
+                    </a>
+
+                    <!-- Links -->
+                    <div class="d-flex align-items-center gap-4">
+                        <a href="#" class="text-light hover-underline sub-item">Purchases</a>
+                        <a href="#" class="text-light hover-underline sub-item">Reviews</a>
+                        <a href="cart.html" class="text-light hover-underline sub-item">
+                            View Cart <i class="bi bi-cart4"></i>
+                            <span class="badge bg-white text-dark rounded-circle">2</span>
+                        </a>
+                        <a href="search.html" class="text-light hover-search">
+                            <i class="bi bi-search"></i>
+                        </a>
+                        <a href="watchlist.html" class="text-light hover-paint">
+                            <i class="bi bi-heart"></i>
+                        </a>
+
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown">
+                            <a href="#" class="text-light hover-avatar" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="avatarDropdown">
+                                <li><a class="dropdown-item menu-item" href="myaccount.html" id="myaccount-item">My Account</a></li>
+                                <li><a class="dropdown-item menu-item" href="#" id="support-item">Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main class="mt-5 pt-5">
+            <div class="container custom-container">
+
+                <!-- Start Breadcrumb Area -->
+                <nav aria-label="breadcrumb" class="mt-5">
+                    <ol class="breadcrumb bg-dark text-light rounded p-3 mb-4">
+                        <li class="breadcrumb-item"><a href="index.html" class="text-light">Home</a></li>
+                        <li class="breadcrumb-item active text-warning" aria-current="page">My Account</li>
+                    </ol>
+                </nav>
+                <!-- End Breadcrumb Area -->
+
+
+
+                <!-- Start Dark Hue Region -->
+                <div class="dark-hue-region py-5">
+                    <div class="dashboard-warp">
+                        <div class="px-5">
+                            <div class="media">
+                                <div class="thumbnail">
+                                    <img src="assets/img/avatar.png" alt="Profile">
+                                </div>
+                                <div class="media-body">
+                                    <h5 class="title mb-0 mt-3 text-light">Hello Name</h5>
+                                    <p class="mt-2 text-secondary">Golden Octaves Member Since Sep 2024</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Sidebar Navigation -->
+                            <div class="col-4">
+                                <div class="card mt-3 bg-dark text-light">
+                                    <nav class="dashboard-nav p-4">
+                                        <div class="nav nav-tabs" role="tablist">
+                                            <a class="col-12 nav-item nav-link active text-light" data-bs-toggle="tab" href="#nav-account" role="tab" aria-selected="true"><i class="fas fa-user"></i> Account Details</a>
+                                            <a class="col-12 nav-item nav-link text-light" data-bs-toggle="tab" href="#nav-add-product" role="tab" aria-selected="false"><i class="fas fa-mobile-alt"></i> Products</a>
+                                            <a class="col-12 nav-item nav-link text-light" data-bs-toggle="tab" href="#nav-product-listing" role="tab" aria-selected="false"><i class="fas fa-list"></i> Product Listing</a>
+                                            <a class="col-12 nav-item nav-link text-light" data-bs-toggle="tab" href="#nav-orders" role="tab" aria-selected="false"><i class="fas fa-shopping-basket"></i> Orders</a>
+                                        </div>
+                                    </nav>
+                                </div>
+                            </div>
+
+                            <!-- Tab Content -->
+                            <div class="col-8">
+                                <div class="tab-content">
+                                    <!-- Add Product Tab -->
+                                    <div class="tab-pane fade" id="nav-add-product" role="tabpanel">
+                                        <div class="dashboard-overview">
+                                            <p class="fs-2 text-light">Create New Account</p>
+                                            <form class="account-details-form">
+                                                <div class="row px-5">
+                                                    <!-- Category Select -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group">
+                                                            <label class="text-light">Category</label>
+                                                            <select class="form-select mt-2 bg-dark text-light" id="categorySelect">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Brand Select -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group">
+                                                            <label class="text-light">Brand</label>
+                                                            <select class="form-select mt-2 bg-dark text-light" id="brandSelect" onchange="updateModels()">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Model Select -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group">
+                                                            <label class="text-light">Model</label>
+                                                            <select class="form-select mt-2 bg-dark text-light" id="modelSelect">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Product Title -->
+                                                    <div class="col-12 mt-3">
+                                                        <div class="form-group">
+                                                            <label class="text-light">Title</label>
+                                                            <input type="text" class="form-control form-input mt-2 bg-dark text-light" value="" id="title">
+                                                        </div>
+                                                    </div>
+                                                    <!-- Product Description -->
+                                                    <div class="col-12 mt-3">
+                                                        <div class="form-group">
+                                                            <label class="text-light">Short Description</label>
+                                                            <input type="text" class="form-control form-input mt-2 bg-dark text-light" value="" id="description">
+
+                                                        </div>
+                                                    </div>
+                                                    <!-- Warranty Select -->
+                                                    <div class="col-4 mt-3">
+                                                        <div class="form-group mt-2">
+                                                            <label class="text-light">Warranty</label>
+                                                            <input type="text" class="form-control form-input mt-2 bg-dark text-light" value="" id="warranty">
+                                                        </div>
+                                                    </div>
+                                                    <!-- Origin Select -->
+                                                    <div class="col-4 mt-3">
+                                                        <div class="form-group mt-2">
+                                                            <label class="text-light">Country of Origin</label>
+                                                            <select class="form-select mt-2 bg-dark text-light" id="originSelect">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Colour Select -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group mt-2">
+                                                            <label class="text-light">Colour</label>
+                                                            <select class="form-select mt-2 bg-dark text-light" id="colourSelect">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Condition Select -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group mt-2">
+                                                            <label class="text-light">Condition</label>
+                                                            <select class="form-select mt-2 bg-dark text-light" id="conditionSelect">
+                                                                <option value="0">Select</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <!-- Price Input -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group mt-2">
+                                                            <label class="text-light">Price</label>
+                                                            <input type="text" class="form-control mt-2 bg-dark text-light" pattern="^\d+(\.\d{2})?$" placeholder="0.00" id="price">
+                                                        </div>
+                                                    </div>
+                                                    <!-- Quantity Input -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <div class="form-group mt-2">
+                                                            <label class="text-light">Quantity</label>
+                                                            <input type="number" min="1" step="1" oninput="validateInteger(this)" class="form-control mt-2 bg-dark text-light" id="quantity">
+                                                        </div>
+                                                    </div>
+                                                    <!-- Image Upload -->
+                                                    <div class="col-lg-4 mt-3">
+                                                        <label class="text-light">Image 1</label>
+                                                        <input class="form-control b2 mt-2 bg-dark text-light" type="file" accept="image/*" id="image1">
+                                                    </div>
+                                                    <div class="col-lg-4 mt-3">
+                                                        <label class="text-light">Image 2</label>
+                                                        <input class="form-control b2 mt-2 bg-dark text-light" type="file" accept="image/*" id="image2">
+                                                    </div>
+                                                    <div class="col-lg-4 mt-3">
+                                                        <label class="text-light">Image 3</label>
+                                                        <input class="form-control b2 mt-2 bg-dark text-light" type="file" accept="image/*" id="image3">
+                                                    </div>
+                                                    <!-- Submit Button -->
+                                                    <div class="col-12 mt-5">
+                                                        <button type="button" class="col-12 btn btn-primary text-center fs-4 mt-2" onclick="productListing();">Add Product</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+
+                                    <!-- Orders Tab -->
+                                    <div class="tab-pane fade" id="nav-orders" role="tabpanel">
+                                        <div class="dashboard-order">
+                                            <p class="fs-2 text-light">My Orders</p>
+                                            <div class="table-responsive px-5">
+                                                <table class="table table-dark">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Order</th>
+                                                            <th scope="col">Products</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Status</th>
+                                                            <th scope="col">Total</th>
+                                                            <th scope="col">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">#1234</th>
+                                                            <td>Apple iPhone 15 Pro <br/> Samsung Galaxy Note 20</td>
+                                                            <td>September 02, 2024</td>
+                                                            <td>Delivered</td>
+                                                            <td>Rs 0.00</td>
+                                                            <td><a href="#" class="btn btn-primary">View</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Product Listing Tab -->
+                                    <div class="tab-pane fade" id="nav-product-listing" role="tabpanel">
+                                        <div class="dashboard-order">
+                                            <p class="fs-2 text-light">My Product List</p>
+                                            <div class="table-responsive px-5">
+                                                <table class="table table-dark">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">Id</th>
+                                                            <th scope="col">Title</th>
+                                                            <th scope="col">Price</th>
+                                                            <th scope="col">Quantity</th>
+                                                            <th scope="col">Date</th>
+                                                            <th scope="col">Actions</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr>
+                                                            <th scope="row">#1234</th>
+                                                            <td>Apple iPhone 15 Pro</td>
+                                                            <td>Rs 0.00</td>
+                                                            <td>1</td>
+                                                            <td>September 02, 2024</td>
+                                                            <td><a href="#" class="btn btn-primary">View</a></td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Account Details Tab -->
+                                    <div class="tab-pane fade show active" id="nav-account" role="tabpanel">
+                                        <div class="col-12">
+                                            <div class="dashboard-account">
+                                                <p class="fs-2 text-light">Account Details</p>
+                                                <form class="account-details-form">
+                                                    <div class="row px-5">
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="text-light">First Name</label>
+                                                                <input type="text" class="form-control mt-2 bg-dark text-light" value="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="form-group">
+                                                                <label class="text-light">Last Name</label>
+                                                                <input type="text" class="form-control mt-2 bg-dark text-light" value="">
+                                                            </div>
+                                                        </div>
+
+                                                        <!-- Password Change Section -->
+                                                        <div class="col-12">
+                                                            <p class="fs-4 mt-4">Password Change</p>
+                                                            <div class="form-group mt-3">
+                                                                <label>Current Password</label>
+                                                                <input type="password" class="form-control mt-2 bg-dark text-light" value="" placeholder="Please enter current password">
+                                                            </div>
+                                                            <div class="form-group mt-3">
+                                                                <label>New Password</label>
+                                                                <input type="password" class="form-control mt-2 bg-dark text-light" placeholder="Please enter new password">
+                                                            </div>
+                                                            <div class="form-group mt-3">
+                                                                <label>Confirm New Password</label>
+                                                                <input type="password" class="form-control mt-2 bg-dark text-light" placeholder="Please confirm new password">
+                                                            </div>
+                                                            <div class="col-12 mt-5">
+                                                                <input type="button" class="col-12 btn btn-success text-center fs-4 mt-2" value="Update Password">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Account Details Tab -->
+
+                                </div>
+                                <!-- End Tab Content -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Dark Hue Region -->
+
+
+                <!-- Why Choose Us Section -->
+                <section class="why-choose-us my-5">
+                    <div class="container">
+                        <h2 class="text-center mb-4">Why Choose Us?</h2>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            <!-- Feature cards -->
+                            <div class="col">
+                                <div class="feature-card">
+                                    <i class="bi bi-truck"></i>
+                                    <h5 class="mt-3">Fast Delivery</h5>
+                                    <p>Get your products delivered quickly and safely to your doorstep.</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="feature-card">
+                                    <i class="bi bi-cash-stack"></i>
+                                    <h5 class="mt-3">Best Prices</h5>
+                                    <p>We offer the best prices without compromising quality.</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="feature-card">
+                                    <i class="bi bi-gem"></i>
+                                    <h5 class="mt-3">Quality Assurance</h5>
+                                    <p>All our products are quality checked to ensure the best experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+
+
+        <!-- Footer -->
+        <footer class="mt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Support</h3>
+                        <p class="mt-4">No. 32, Sample Address A, Colombo 00500, Sri Lanka.</p>
+                        <p>support@goldenoctaves.lk</p>
+                        <p>(+94) 112 729 729</p>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Account</h3>
+                        <p class="mt-4">My Account</p>
+                        <p>Login / Register</p>
+                        <p>Cart</p>
+                        <p>Wishlist</p>
+                        <p>Shop</p>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Quick Links</h3>
+                        <p class="mt-4">Privacy Policy</p>
+                        <p>Terms Of Use</p>
+                        <p>FAQ</p>
+                        <p>Contact</p>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Download App</h3>
+                        <p class="mt-4"><i class="bi bi-apple fs-4 mt-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; App Store</p>
+                        <p><i class="bi bi-google-play fs-4 mt-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Play Store</p>
+                    </div>
+                </div>
+                <hr class="border-light">
+                <div class="text-center text-light mt-4">
+                    © 2024. All rights reserved by Golden Octaves. <br>
+                    <br/>
+                    <span>Accept For: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-credit-card-2-front"></i> Visa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-credit-card-2-back"></i> MasterCard</span>
+                    <br/>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+         
+        
+        <script src="assets/js/notification.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/myaccount.js"></script>
+    </body>
+</html>

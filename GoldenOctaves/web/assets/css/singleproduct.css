@@ -1,0 +1,96 @@
+.bg-dark {
+    background-color: #343a40; /* Match the 'Why Choose Us' section color */
+}
+
+.carousel-inner img {
+    border-radius: .25rem; /* Ensure images have rounded corners */
+}
+
+.btn-warning {
+    background-color: #ffc107; /* Match the color scheme */
+    color: #000;
+}
+
+.btn-outline-light {
+    border: 2px solid #fff;
+    color: #fff;
+}
+
+.btn-outline-light:hover {
+    background-color: #fff;
+    color: #000;
+}
+
+.input-group input {
+    max-width: 80px;
+}
+
+.d-flex .btn {
+    flex-grow: 1;
+}
+
+.p-4 {
+    padding: 1.5rem; /* Adjust padding for better spacing */
+}
+
+.bg-dark {
+    background-color: #2d2d2d; /* Darker background for consistency */
+}
+
+.fixed-carousel-image {
+    height: 400px;
+    object-fit: cover; /* Ensures the image fits well inside the given dimensions */
+}
+
+.equal-height-box {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
+}
+
+.qty-input {
+    width: 100px; /* Larger size */
+}
+
+.small-heart {
+    width: 35px; /* Smaller size */
+    height: 35px;
+    padding: 0.4rem;
+}
+
+.equal-size-sections {
+    height: 100%; /* Ensures equal height for both sections */
+}
+
+.mini-image-size {
+    flex: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%; /* Adjust the percentage as needed */
+    height: 200px;
+    object-fit: cover; /* Ensures images fit within the size */
+}
+
+.product-card {
+    position: relative;
+    overflow: hidden;
+    border: 10px;
+    margin: 10px;
+    transition: transform 0.2s;
+    background-color: #333; /* Set a darker card background */
+    border-radius: 10px; /* Rounded corners */
+}
+
+.product-card:hover{
+    transform: scale(1.05);
+    background: grey;
+    transition: 0.3s;
+}
+.product-card:hover .hover-icons {
+    opacity: 1; /* Show on hover */
+}
+
+.row-cols-4 > .col {
+    flex: 0 0 24%; /* Adjusted to maintain 4 items per row with space between */
+}

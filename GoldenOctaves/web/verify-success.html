@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Successfully Verified</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="assets/img/logo.png" />
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <!-- Notification CSS -->
+        <link rel="stylesheet" href="assets/css/notification.css"/>
+
+        <link rel="stylesheet" href="assets/css/style.css" />
+    </head>
+    <body>
+        <!-- Blurred Background -->
+        <div style="position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100%;
+             background: url('assets/img/bg.png') no-repeat center center;
+             background-size: cover;
+             filter: blur(8px) brightness(45%);
+             z-index: -1;">
+        </div>
+
+        <!-- Centered Card -->
+        <div class="card text-center position-absolute top-50 start-50 translate-middle p-5 shadow-lg d-flex flex-column justify-content-between"
+             style="border-radius: 10px; background: url('assets/gif/success.gif'); background-size: contain; background-repeat: no-repeat; height: 75%; width: 50%;">
+
+            <!-- Header Section -->
+            <div class="d-flex flex-column align-items-center">
+                <h1 class="text-success justify-content-end align-items-center">Account Verified Successfully</h1>
+            </div>
+
+
+
+            <!-- Sign Up Button Positioned at the Bottom -->
+            <div class="mt-auto">
+                <!-- Countdown Section -->
+                <div class="mt-auto">
+                    <p class="fs-5 text-secondary text-center">Page redirects automatically in <span id="countdown">7</span> seconds to</p>
+                </div>
+                <!-- Countdown Label -->
+                <label class="fs-5 fw-bold sign-up hover-text text-center mb-3" onclick="window.location = 'signup.html';" style="cursor: pointer;">
+                    Sign Up
+                </label>
+            </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="assets/js/notification.js"></script>
+        <script src="assets/js/signin.js"></script>
+
+        <!-- Countdown and Redirect Script -->
+        <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let countdown = 7;
+                        const countdownElement = document.getElementById('countdown');
+
+                        const interval = setInterval(function () {
+                            countdown--;
+                            countdownElement.textContent = countdown;
+
+                            if (countdown <= 0) {
+                                clearInterval(interval);
+                                window.location.href = 'signin.html';
+                            }
+                        }, 1000); // Update every second
+                    });
+        </script>
+        <script src="assets/js/script.js"></script>
+    </body>
+</html>

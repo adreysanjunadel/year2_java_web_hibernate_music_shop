@@ -1,0 +1,15 @@
+# Build outputs
+GoldenOctaves/build/
+GoldenOctaves/dist/
+
+# IDE files
+GoldenOctaves/nbproject/
+
+# Generated output files
+GoldenOctaves/build.xml
+
+# Additional
+CopyLibs/
+javaee-endorsed-api-7.0/
+.history/
+MANIFEST.MF

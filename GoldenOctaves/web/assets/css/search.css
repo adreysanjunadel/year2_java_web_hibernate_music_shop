@@ -1,0 +1,66 @@
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+.filter-group, .pagination {
+    margin-bottom: 20px;
+}
+.product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 30%;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.product-card:hover {
+    transform: scale(1.05);
+}
+.product-card img {
+    max-width: 100%;
+    height: auto;
+}
+.product-card h3 {
+    font-size: 1.2rem;
+    margin: 10px 0;
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.button-group input[type="radio"] {
+    display: none;
+}
+.button-group label {
+    background-color: #ddd;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.button-group input[type="radio"]:checked + label {
+    background-color: gold;
+    color: #fff;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+}
+.pagination button {
+    margin: 0 5px;
+    padding: 8px 16px;
+    border: none;
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+.pagination button.active {
+    background-color: #007bff;
+    color: white;
+}

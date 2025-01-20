@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Search</title>
+        <!-- Favicon -->
+        <link rel="icon" href="assets/img/logo.png">
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+        <!-- Notification CSS -->
+        <link rel="stylesheet" href="assets/css/notification.css"/>
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="assets/css/style.css">
+        <!-- jQuery UI CSS -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <style>
+            .search-sidebar .collapse {
+                border: 1px solid #444;
+                border-radius: 5px;
+                margin-top: 10px;
+                padding: 10px;
+            }
+
+            .search-sidebar .collapse.show {
+                display: block;
+            }
+
+            .search-sidebar h6.title {
+                cursor: pointer;
+                background-color: #333;
+                color: #fff;
+                padding: 10px;
+                border-radius: 5px;
+                margin-bottom: 0;
+                position: relative;
+            }
+
+            .search-sidebar h6.title::after {
+                content: '\f078'; /* down arrow icon */
+                font-family: 'Bootstrap Icons';
+                position: absolute;
+                right: 10px;
+                top: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .search-sidebar h6.title[aria-expanded="true"]::after {
+                content: '\f077'; /* up arrow icon */
+                transform: rotate(180deg);
+            }
+
+            #slider-range {
+                margin-top: 10px;
+                margin-bottom: 10px;
+            }
+
+            .amount-range {
+                border: 1px solid #ccc;
+                background-color: #333;
+                color: #fff;
+                padding: 5px;
+                text-align: center;
+            }
+
+            input[type="radio"] {
+                margin-right: 0.5rem; /* Adjust spacing between radio button and label */
+                cursor: pointer;
+            }
+
+            label {
+                cursor: pointer;
+            }
+
+            .product-card img {
+                max-width: 100%; /* Adjust the percentage as needed */
+                height: 200px;
+            }
+
+            .product-card {
+                position: relative;
+                overflow: hidden;
+                border: 10px;
+                margin: 10px;
+                transition: transform 0.2s;
+                background-color: #333; /* Set a darker card background */
+                border-radius: 10px; /* Rounded corners */
+            }
+
+            .product-card:hover{
+                transform: scale(1.05);
+                background: grey;
+                transition: 0.3s;
+            }
+            .product-card:hover .hover-icons {
+                opacity: 1; /* Show on hover */
+            }
+        </style>
+    </head>
+    <body class="bg-dark text-light" onload="loadData();">
+        <!-- Blurred Background -->
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: url('assets/img/bg.png') no-repeat center center; background-size: cover; filter: blur(10px) brightness(60%); z-index: -1; pointer-events: none;">
+            <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 40%; background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%); z-index: -1;"></div>
+        </div>
+
+        <!-- Thin Strip Header (Disappears on scroll) -->
+        <header id="top-strip" class="bg-dark py-2">
+            <div class="container custom-container">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="d-flex gap-3">
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    English
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">English</a></li>
+                                    <li><a class="dropdown-item" href="#">Spanish</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    LKR
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">LKR</a></li>
+                                    <li><a class="dropdown-item" href="#">USD</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 text-end">
+                        <ul class="list-inline m-0" id="st-quick-link">
+                            <li class="list-inline-item"><a href="#" class="text-light">Help</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="list-inline-item" id="st-quick-link-link-li-1"><a href="signup.html" class="text-light">Join Us</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                            <li class="list-inline-item" id="st-quick-link-link-li-2"><a href="signin.html" class="text-light">Sign In</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Floating "Island" Header -->
+        <div id="floating-header" class="container-fluid">
+            <div class="floating-island custom-container bg-dark text-light shadow-sm px-5 py-3 rounded">
+                <div class="d-flex align-items-center justify-content-between">
+                    <!-- Logo and Name -->
+                    <a class="d-flex align-items-center text-decoration-none text-light" href="index.html">
+                        <img src="assets/img/logo.png" alt="Logo" width="40" height="40" class="me-2">
+                        <span class="fs-4">&nbsp;&nbsp;Golden Octaves</span>
+                    </a>
+
+                    <!-- Links -->
+                    <div class="d-flex align-items-center gap-4">
+                        <a href="#" class="text-light hover-underline sub-item">Purchases</a>
+                        <a href="#" class="text-light hover-underline sub-item">Reviews</a>
+                        <a href="cart.html" class="text-light hover-underline sub-item">
+                            View Cart <i class="bi bi-cart4"></i>
+                            <span class="badge bg-white text-dark rounded-circle">2</span>
+                        </a>
+                        <a href="search.html" class="text-light hover-search">
+                            <i class="bi bi-search"></i>
+                        </a>
+                        <a href="watchlist.html" class="text-light hover-paint">
+                            <i class="bi bi-heart"></i>
+                        </a>
+
+                        <!-- Dropdown Menu -->
+                        <div class="dropdown">
+                            <a href="#" class="text-light hover-avatar" id="avatarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="avatarDropdown">
+                                <li><a class="dropdown-item menu-item" href="myaccount.html" id="myaccount-item">My Account</a></li>
+                                <li><a class="dropdown-item menu-item" href="#" id="support-item">Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <main style="margin-top: 7.5%">
+            <div class="container custom-container">
+                <!-- Search-Specific-Content -->
+                <div class="search-specific-content bg-dark text-light rounded p-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <div class="search-sidebar">
+                                    <p class="fs-2 text-start py-2">Filters</p>
+
+                                    <div class="toggle-list product-categories mt-3">
+                                        <h6 class="title" data-bs-toggle="collapse" data-bs-target="#categoryOptions" aria-expanded="true">
+                                            Category
+                                            <span class="indicator">&#9662;</span> <span class="indicator hide">&#9652;</span> </h6>
+                                        <div id="categoryOptions" class="collapse show">
+                                            <ul id="category-options" class="list-unstyled">
+                                                <li id="category-li">
+                                                    <input type="radio" name="categoryRadio" value="category_value"> <a id="category-a">Category Name</a>
+                                                </li>
+                                                <li id="category-li">
+                                                    <input type="radio" name="categoryRadio" value="category_value"> <a id="category-a">Category Name</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="toggle-list product-brands mt-4">
+                                        <h6 class="title" data-bs-toggle="collapse" data-bs-target="#brandOptions" aria-expanded="true">
+                                            Brands
+                                            <span class="indicator">&#9662;</span> <span class="indicator hide">&#9652;</span> </h6>
+                                        <div id="brandOptions" class="collapse show">
+                                            <ul id="brand-options" class="list-unstyled">
+                                                <li id="brand-li">
+                                                    <input type="radio" name="brandRadio" value="brand_value"> <a id="brand-a">Brand Name</a>
+                                                </li>
+                                                <li id="brand-li">
+                                                    <input type="radio" name="brandRadio" value="brand_value"> <a id="brand-a">Brand Name</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="toggle-list product-condition mt-4">
+                                        <h6 class="title" data-bs-toggle="collapse" data-bs-target="#conditionOptions" aria-expanded="true">
+                                            Condition
+                                            <span class="indicator">&#9662;</span> <span class="indicator hide">&#9652;</span> </h6>
+                                        <div id="conditionOptions" class="collapse show">
+                                            <ul id="condition-options" class="list-unstyled">
+                                                <li id="condition-li">
+                                                    <input type="radio" name="conditionRadio" value="condition_value"> <a id="condition-a">Condition Name</a>
+                                                </li>
+                                                <li id="condition-li">
+                                                    <input type="radio" name="conditionRadio" value="condition_value"> <a id="condition-a">Condition Name</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="toggle-list product-model mt-4">
+                                        <h6 class="title" data-bs-toggle="collapse" data-bs-target="#colourOptions" aria-expanded="true">
+                                            Colour
+                                            <span class="indicator">&#9662;</span> <span class="indicator hide">&#9652;</span> </h6>
+                                        <div id="colourOptions" class="collapse show">
+                                            <ul id="colour-options" class="list-unstyled">
+                                                <li id="colour-li">
+                                                    <input type="radio" name="colourRadio" value="colour_value"> <a id="colour-a">Colour Name</a>
+                                                </li>
+                                                <li id="colour-li">
+                                                    <input type="radio" name="colourRadio" value="colour_value"> <a id="colour-a">Colour Name</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="toggle-list product-price-range mt-4 active">
+                                        <h6 class="title" data-bs-toggle="collapse" data-bs-target="#priceOptions" aria-expanded="false">
+                                            Price
+                                            <span class="indicator">&#9662;</span> <span class="indicator hide">&#9652;</span> </h6>
+                                        <div id="priceOptions" class="collapse">
+                                            <div id="slider-range" class="custom-slider"></div>
+                                            <p class="amount-range">Price Range: <span id="amount">Rs. 0 - $1,000,000</span></p>
+                                        </div>
+                                    </div>
+
+                                    <div class="d-flex flex-column gap-3 mt-3 mb-3">
+                                        <button class="btn btn-apply w-100" onclick="searchProducts(0);">Apply</button>
+                                        <button class="btn btn-reset w-100" onclick="resetSearch();">Reset All</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="search-results">
+                                    <p class="fs-2 text-start px-5 py-2">Search Results</p>
+                                    <div class="row row-cols-3 g-3" id="product-container">
+                                    </div>
+                                    <nav aria-label="Page navigation" class="mt-5 mb-5">
+                                        <ul class="pagination">
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Why Choose Us Section -->
+                <section class="why-choose-us my-5">
+                    <div class="container">
+                        <h2 class="text-center mb-4">Why Choose Us?</h2>
+                        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                            <!-- Feature cards -->
+                            <div class="col">
+                                <div class="feature-card">
+                                    <i class="bi bi-truck"></i>
+                                    <h5 class="mt-3">Fast Delivery</h5>
+                                    <p>Get your products delivered quickly and safely to your doorstep.</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="feature-card">
+                                    <i class="bi bi-cash-stack"></i>
+                                    <h5 class="mt-3">Best Prices</h5>
+                                    <p>We offer the best prices without compromising quality.</p>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="feature-card">
+                                    <i class="bi bi-gem"></i>
+                                    <h5 class="mt-3">Quality Assurance</h5>
+                                    <p>All our products are quality checked to ensure the best experience.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-2">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Support</h3>
+                        <p class="mt-4">No. 32, Sample Address A, Colombo 00500, Sri Lanka.</p>
+                        <p>support@goldenoctaves.lk</p>
+                        <p>(+94) 112 729 729</p>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Account</h3>
+                        <p class="mt-4">My Account</p>
+                        <p>Login / Register</p>
+                        <p>Cart</p>
+                        <p>Wishlist</p>
+                        <p>Shop</p>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Quick Links</h3>
+                        <p class="mt-4">Privacy Policy</p>
+                        <p>Terms Of Use</p>
+                        <p>FAQ</p>
+                        <p>Contact</p>
+                    </div>
+                    <div class="col-md-3 mt-4">
+                        <h3 class="text-light mt-1">Download App</h3>
+                        <p class="mt-4"><i class="bi bi-apple fs-4 mt-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; App Store</p>
+                        <p><i class="bi bi-google-play fs-4 mt-2"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Play Store</p>
+                    </div>
+                </div>
+                <hr class="border-light">
+                <div class="text-center text-light mt-4">
+                    © 2024. All rights reserved by Golden Octaves. <br>
+                    <br/>
+                    <span>Accept For: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-credit-card-2-front"></i> Visa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="bi bi-credit-card-2-back"></i> MasterCard</span>
+                    <br/>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bootstrap Bundle with Popper -->
+        <!-- Include Bootstrap JavaScript at the end of the body -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <!-- jQuery UI JS -->
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+        <script>
+                            $(function () {
+                                $("#slider-range").slider({
+                                    range: true,
+                                    min: 0,
+                                    max: 1000000,
+                                    values: [0, 1000000],
+                                    slide: function (event, ui) {
+                                        $("#amount").text("Rs. " + ui.values[0] + " - Rs." + ui.values[1]);
+                                    }
+                                });
+                                $("#amount").text("Rs. " + $("#slider-range").slider("values", 0) + " - Rs." + $("#slider-range").slider("values", 1));
+
+                                // Toggle indicator
+                                $('.toggle-list .title').on('click', function () {
+                                    $(this).find('.indicator').toggleClass('hide');
+                                });
+                            });
+        </script>
+        <script src="assets/js/notification.js"></script>
+        <script src="assets/js/script.js"></script>
+        <script src="assets/js/search.js"></script>
+    </body>
+</html>

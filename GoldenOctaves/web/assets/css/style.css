@@ -1,0 +1,763 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Sep 3, 2024, 5:12:24 PM
+    Author     : Sanjuna
+*/
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal; /* Regular weight */
+    font-style: normal; /* Normal style */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold; /* Bold weight */
+    font-style: normal; /* Normal style */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Light.ttf') format('truetype');
+    font-weight: 300; /* Light weight */
+    font-style: normal; /* Normal style */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-SemiBold.ttf') format('truetype');
+    font-weight: 600; /* SemiBold weight */
+    font-style: normal; /* Normal style */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-Italic.ttf') format('truetype');
+    font-weight: normal; /* Regular weight */
+    font-style: italic; /* Italic style */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-BoldItalic.ttf') format('truetype');
+    font-weight: bold; /* Bold weight */
+    font-style: italic; /* Italic style */
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-LightItalic.ttf') format('truetype');
+    font-weight: 300; /* Light weight */
+    font-style: italic; /* Italic style */
+}
+
+*{
+    font: 'Montserrat';
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* Uses Montserrat Bold */
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal; /* Uses Montserrat Regular */
+}
+
+.secondary-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; /* Uses Montserrat Light */
+}
+
+.subheading {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600; /* Uses Montserrat SemiBold */
+}
+
+.emphasis {
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic; /* Uses Montserrat Italic */
+}
+
+.bold-emphasis {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold; /* Uses Montserrat Bold */
+    font-style: italic; /* Uses Montserrat BoldItalic */
+}
+
+.light-italic {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300; /* Uses Montserrat Light */
+    font-style: italic; /* Uses Montserrat LightItalic */
+}
+
+.form-container {
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.6);
+}
+
+button {
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+button:hover {
+    background-color: #e6b800; /*Slightly%20lighter%20shade%20of%20gold%20*/
+}
+
+.basic-btn {
+    background: #FFD700;
+}
+
+/* General hover text effect */
+.hover-text {
+    transition: transform 0.2s ease;
+    text-decoration: none;
+}
+
+/* Ensure scaling applies to all hover-text elements */
+.hover-text:hover {
+    cursor: pointer;
+    transform: scale(1.1); /* Slight increase in size */
+}
+
+/* Specific hover effects for Forgot Password */
+.fp {
+    color: #DC143C;
+    transition: color 0.2s ease, transform 0.2s ease; /* Ensure transition is applied */
+}
+
+.fp:hover {
+    color: #FF2E5C;
+    transform: scale(1.1); /* Ensure scaling is applied */
+}
+
+/* Specific hover effects for Sign Up */
+.sign-up {
+    color: navy;
+    transition: color 0.2s ease, transform 0.2s ease; /* Ensure transition is applied */
+}
+
+.sign-up:hover {
+    color: #6495ED;
+    transform: scale(1.05); /* Ensure scaling is applied */
+}
+
+/* Apply scaling effect to input fields on focus */
+input.form-control:focus,
+textarea.form-control:focus {
+    transform: scale(1.025); /* Slight increase in size */
+    transition: transform 0.2s ease;
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5); /* Optional: Add a custom focus outline */
+}
+
+/* Apply scaling effect to other form controls if needed */
+select.form-control:focus {
+    transform: scale(1.025);
+    transition: transform 0.2s ease;
+}
+
+/* Scaling effect for login button */
+button.basic-btn {
+    transition: transform 0.2s ease; /* Smooth scaling transition */
+}
+
+button.basic-btn:hover {
+    transform: scale(1.05); /* Slight increase in size */
+}
+
+/*CSS For Verify Button at SignIn*/
+.verify-btn {
+    background-color: #32CD32; /* LimeGreen */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.25rem;
+    font-weight: bold;
+    width: 100%;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.verify-btn:hover {
+    background-color: #228B22; /* ForestGreen */
+    transform: scale(1.05); /* Slight increase in size */
+    cursor: pointer;
+}
+
+.text-outline {
+    position: relative;
+    display: inline-block;
+}
+
+.text-outline::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: black;
+    z-index: -1;
+    transform: translate(1px, 1px);
+    padding: 1px; /* Adjust as needed for thickness */
+}
+
+header {
+    background: rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header .btn {
+    border: 1px solid #ffffff50;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+/* Maximum width for alignment across the page */
+.custom-container {
+    max-width: 76%; /* Adjust this value as needed */
+    margin: 0 auto; /* Center the container */
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+/* Thin Strip Header */
+#top-strip {
+    z-index: 1030; /* Higher than content but lower than the island header */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    border-bottom: 1px solid #343a40; /* Subtle bottom border */
+    transition: top 0.3s; /* Smooth transition for hide on scroll */
+}
+
+/* Floating "Island" Header */
+#floating-header {
+    width: 100%; /* Full width */
+    z-index: 1050; /* Higher than the thin strip */
+    display: flex;
+    justify-content: center; /* Centers the header */
+    pointer-events: none; /* Makes sure container itself is not clickable */
+    position: fixed; /* Keeps it fixed on scroll */
+    top: 1%; /* Adjusted gap when scrolling */
+    transition: top 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for top position and shadow */
+}
+
+.floating-island {
+    width: 100%; /* Full width inside the custom container */
+    pointer-events: auto; /* Allows elements inside to be clickable */
+    border-radius: 30px; /* More rounded corners */
+    padding: 15px 30px; /* Adds padding for spacing */
+    background-color: #333; /* Dark background for the theme */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Subtle shadow by default */
+}
+
+.floating-island.at-top {
+    top: 5.75%; /* Adjusted gap when at the top */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5); /* More prominent shadow when at the top */
+}
+
+/* Hover Effects */
+.hover-underline:hover {
+    text-decoration: underline;
+}
+
+.hover-paint i {
+    color: #ffffffb3; /* Light grey */
+    transition: color 0.3s ease;
+}
+
+.hover-paint:hover i {
+    color: #ff0000; /* Red when hovered */
+}
+
+.hover-avatar i {
+    color: #ffffffb3; /* Light grey */
+    transition: color 0.3s ease;
+}
+
+.hover-avatar:hover i {
+    color: #00bfff; /* Light blue when hovered */
+}
+
+.hover-search i {
+    color: #ffffffb3; /* Light grey */
+    transition: color 0.3s ease;
+}
+
+.hover-search:hover i {
+    color: gold; /* Light blue when hovered */
+}
+
+/* Badge Positioning */
+.badge {
+    font-size: 0.8em;
+    position: relative;
+    top: -8px;
+    left: -5px;
+}
+
+/* Dropdown Styling */
+.dropdown-menu {
+    background-color: #212529; /* Dark background for dropdown */
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.why-choose-us {
+    background-color: #222;
+    padding: 50px 0;
+}
+
+.why-choose-us .feature-card {
+    background-color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.why-choose-us .feature-card i {
+    font-size: 2rem;
+    color: #f0ad4e;
+    margin-bottom: 15px;
+}
+
+/* Ensure all images fit uniformly */
+.fixed-image-size {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.product-card:hover{
+    transform: scale(1.05);
+    background: grey;
+    transition: 0.3s;
+}
+
+.category-card:hover{
+    transform: scale(1.05);
+    background: grey;
+    transition: 0.3s;
+}
+
+.feature-card:hover{
+    transform: scale(1.05);
+    background: grey;
+    transition: 0.3s;
+}
+
+.menu-item {
+    color: white;
+}
+
+.menu-item:hover {
+    cursor: pointer;
+    color: black;
+}
+
+.panel-btn:hover {
+    transform: scale(1.05);
+    background: #444;
+    transition: 0.3s;
+    text-shadow: 0px 0px 0px 3px black;
+}
+
+.sub-item{
+    text-decoration: none;
+}
+
+/* Dark Hue Region */
+.dark-hue-region {
+    background-color: #222;
+    padding: 30px 0;
+    border-radius: 10px;
+}
+
+/* Dark Theme for Card and Navigation */
+.card.bg-dark,
+.nav.nav-tabs .nav-link {
+    background-color: #333;
+    border: none;
+    color: #fff;
+}
+
+/* Ensure all images fit uniformly */
+.fixed-image-size {
+    width: 100%;
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensures the images are cropped properly */
+}
+
+/* Custom footer styling for a better blend with background */
+footer {
+    background: linear-gradient(to bottom, #303030, #1e1e1e); /* Blended dark gradient */
+}
+
+/* Adjust the category and product card styling */
+.category-card, .product-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+    background-color: #333; /* Set a darker card background */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Hover effect for product cards */
+.product-card:hover .hover-icons,
+.category-card:hover .hover-icons {
+    opacity: 1; /* Show on hover */
+}
+
+/* Hover icons styling */
+.hover-icons {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s;
+}
+
+.hover-icons button {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #444;
+    color: #fff;
+}
+
+.table.table-dark {
+    background-color: #333;
+    color: #fff;
+    border-color: #444;
+}
+
+.table.table-dark th,
+.table.table-dark td {
+    border-color: #444;
+}
+
+.form-control.bg-dark {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+}
+
+.form-control.bg-dark:focus {
+    background-color: #444;
+    border-color: #555;
+}
+
+/* Styling for WebKit browsers */
+::-webkit-scrollbar {
+    width: 12px; /* Adjust width if needed */
+}
+
+::-webkit-scrollbar-track {
+    background: #333; /* Track color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #555; /* Scrollbar color */
+    border-radius: 10px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #777; /* Scrollbar hover color */
+}
+
+.custom-list {
+    list-style-type: disc; /* Use disc or circle for bullet points */
+    margin-left: 20px; /* Adjust as needed */
+}
+
+.custom-list li {
+    margin-bottom: 10px; /* Add space between items */
+    padding-left: 10px; /* Add padding to align text with bullets */
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.page-item {
+    list-style: none;
+}
+
+.page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 1px solid #343a40; /* Match dark theme */
+    border-radius: 5%;
+    background-color: #343a40; /* Dark background */
+    color: #f8f9fa; /* Light text */
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+    outline: none; /* Remove any outline */
+    box-shadow: none; /* Remove any shadow */
+}
+
+.page-link:hover,
+.page-link:focus {
+    background-color: #495057 !important; /* Darker grey for hover */
+    color: #e0e0e0 !important; /* Less prominent white */
+}
+
+.page-item.active .page-link {
+    background-color: #ffd700 !important; /* Gold color */
+    border-color: #ffd700 !important; /* Gold color */
+    color: #343a40 !important; /* Dark text color */
+}
+
+.page-item.disabled .page-link {
+    background-color: #343a40 !important; /* Dark background */
+    color: #6c757d !important; /* Muted grey for disabled state */
+    border-color: #343a40 !important; /* Match background */
+    cursor: not-allowed !important; /* Indicate disabled state */
+}
+
+.page-item.disabled .page-link:hover,
+.page-item.disabled .page-link:focus {
+    background-color: #343a40 !important; /* No hover effect for disabled */
+    color: #6c757d !important; /* Consistent with disabled color */
+}
+
+/* Slider Line */
+.custom-slider .ui-slider-range {
+    background: gold; /* Gold line for the slider */
+}
+
+/* Slider Handle */
+.custom-slider .ui-slider-handle {
+    border: 2px solid gold; /* Gold border */
+    background: transparent; /* Transparent background */
+    width: 20px; /* Adjust size as needed */
+    height: 20px; /* Adjust size as needed */
+    border-radius: 50%; /* Make it a ring */
+}
+
+/* Collapsible Indicator */
+.toggle-list .title {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+}
+
+.toggle-list .title .indicator {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 1.2em; /* Adjust size as needed */
+}
+
+/* Hide Arrow Up */
+.toggle-list .title .indicator.hide {
+    display: none;
+}
+
+/* When collapsible is expanded, swap indicators */
+.collapse.show + .title .indicator {
+    display: none;
+}
+
+.collapse.show + .title .indicator.hide {
+    display: inline-block;
+}
+
+.collapse .btn {
+    border: none; /* Remove border */
+}
+
+/* Radio Button Styling */
+input[type="radio"] {
+    position: relative;
+    margin-right: 0.5rem;
+}
+
+input[type="radio"] + label {
+    position: relative;
+    padding-left: 2rem; /* Space for the radio button */
+    font-size: 1.25rem; /* Adjust font size */
+}
+
+input[type="radio"] + label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #333; /* Black border */
+    border-radius: 50%;
+    background: transparent;
+}
+
+/* Checked Radio Button Styling */
+input[type="radio"]:checked + label::before {
+    background: gold; /* Gold fill for the checked radio button */
+    border: 2px solid gold; /* Gold border for the checked radio button */
+}
+
+/* Button Styles */
+.filter-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.btn-apply {
+    background-color: gold;
+    color: black;
+}
+
+.btn-reset {
+    background-color: black;
+    color: gold;
+}
+
+.carousel-inner {
+    position: relative;
+}
+
+.carousel-item {
+    display: none; /* Hide all slides by default */
+    flex-direction: row;
+}
+
+.carousel-item.active {
+    display: flex; /* Reveal the active slide */
+}
+
+.fixed-carousel-image-size {
+    width: 80%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Ensure text container is fixed on the left */
+.text-container {
+    position: absolute;
+    top: 12%;
+    left: 0;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+    color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+}
+/*
+
+/* Ensure image container is fixed on the right */
+.image-container {
+    flex: 1;
+    padding: 0;
+}
+
+.carousel-image-size {
+    height: 100%; /* Ensure images fit within their container */
+    object-fit: cover; /* Ensure the images cover the container without distortion */
+}
+
+/* Text Overlay Styles */
+.text-overlay {
+    max-width: 100%;
+    margin: auto;
+}
+
+.text-overlay p, .text-overlay h2 {
+    margin: 0;
+}
+
+.text-overlay a {
+    text-decoration: none;
+}
+
+.text-fade {
+    animation: fadeInUp 1.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+         
+
+    }
+}
+
+/* Carousel Controls Styles */
+.carousel-control-prev, .carousel-control-next {
+    width: 5%;
+}
+
+/* Dots Styles */
+.carousel-dots {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.carousel-dots button {
+    background-color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+}
+
+.carousel-dots .active {
+    background-color: #333;
+}
+
+#hot-deals-carousel {
+    position: relative;
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
